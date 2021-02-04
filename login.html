@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Login - MusicPly</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="css/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-		var url = window.location.href;
-		if(url.includes("?success"))
-			alert("Cadastro concluído! Agora faça o login.");
-		else if(url.includes("?none"))
-			alert("Campos não preenchidos!");
+    	if(window.location.href.includes("?success")){
+    		alert("Conta cadastrada com sucesso! Agora faça o login para entrar na sua conta.");
+    		window.location.href = window.location.href.replace("?success","");
+    	}
+
+		function checkform(form){
+			var inputs = form.getElementsByTagName("input");
+			if(inputs[0].value == "" && inputs[1].value == ""){
+				alert("Campos vazios!");
+				return false;
+			}
+			return true;
+		}
+		
 	</script>
 </head>
-<body class="no-margin dark-color">
-	<div class="row">
-		<div class="center-box">
-			<div class="cad-login-div"> 
-				<img class="img-icon" src="imgs/channels.jpg" width="230" height="230">
-				<h3 class="font-black">MusicPly</h3>
-				<div class="form-div">
-					<form method="POST" action="/login">
-						<div class="label-div">
-							<p class="font-black sm"><strong>Email</strong></p>
-							<input name="email" class="input-text" type="email" >
+<body class="dark-color bg-img">
+	<div class="container">
+		<div class="row">
+			<div class="col align-self-start"></div>
+			<div class="col align-self-center">
+				<div class="form-div text-center">
+					<img class="img-fuild icon-img" src="imgs/channels.jpg" width="200" height="200">
+					<h3 class="font-black">MusicPly</h3>
+					<form method="POST" action="/login" onsubmit="checkform(this)">
+						<div class="form-floating m-3">
+							<input name="email" class="form-control" type="email" placeholder=" " required>
+							<label for="email">Email</label>
 						</div>
-						<div class="label-div">
-							<p class="font-black sm"><strong>Senha</strong></p>
-							<input name="passwd" class="input-text" type="password" >
-						</div><hr>
-						<input id="submit_btn" type="submit" class="btn" value="Login">
+						<div class="form-floating m-3">
+							<input name="passwd" class="form-control" type="password" placeholder=" " required>
+							<label for="passwd">Senha</label>
+						</div>
+						<a href="#">Esqueceu a senha?</a>
+						<hr>
+						<input id="submit_btn" type="submit" class="btn btn-outline-primary btn-lg" value="Login">
 					</form>
+					<hr>
+					<h4><strong>Não possui uma conta?</strong></h4>
+					<a href="cadastrar.html" class="btn btn-outline-dark btn-lg">Cadastrar-se</a>
 				</div>
 			</div>
+			<div class="col align-self-end"></div>
 		</div>
 	</div>
 </body>

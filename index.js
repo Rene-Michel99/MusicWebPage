@@ -21,14 +21,8 @@ router.get('/cadastrar.html',function(req,res){
 });
 
 router.post('/cadastro',urlencoded,function(req,res){
-	if(req.body.name != "" && req.body.email != "" && req.body.pass != "" && req.body.confirm_pass != ""){
-		if(req.body.pass == req.body.confirm_pass)
-			res.sendFile(path.join(__dirname+'/login.html?success'));
-		else
-			res.redirect('/cadastrar.html?passwd');
-	}
-	else
-		res.redirect('/cadastrar.html?none');
+	console.log(req.body);
+	res.redirect('/login.html?success');
 });
 
 router.post('/login',urlencoded,function(req,res){

@@ -1,46 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<title>Cadastro - MusicPly</title>
-
+	<script type="text/javascript" src="css/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
-    	var url = window.location.href;
-    	if(url.includes("?passwd"))
-    		alert("As senhas inseridas não são iguais!");
-    	else if(url.includes("?none"))
-    		alert("Há campos não preenchidos!");
+    	function checkform(form) {
+		    var inputs = form.getElementsByTagName('input');
+		    var pass = null;
+		    var conf = null;
+		    for (var i = 0; i < inputs.length; i++) {
+		        if(inputs[i].name == "pass")
+		        	pass = inputs[i].value;
+		        if(inputs[i].name == "confirm_pass")
+		        	conf = inputs[i].value;
+
+		        if(pass != null && conf != null && pass != conf){
+		        	alert("As senhas digitadas não são iguais!");
+		        	return false;
+		        }
+		        else if(pass != null && pass.length < 8){
+		        	alert("A senha deve ter no mínimo 8 caracteres!");
+		        	return false;
+		        }
+
+		        if(inputs[i].hasAttribute("required")){
+		            if(inputs[i].value == ""){
+		                // found an empty field that is required
+		                alert("Please fill all required fields");
+		                return false;
+		            }
+		        }
+		    }
+		    return true;
+		}
     </script>
 	
 </head>
 
-<body class="no-margin">
-	<div class="center-box">
-		<div class="cad-div">
-			<img class="img-icon" src="imgs/channels.jpg" width="230" height="230">
-			<div class="form-div">
-				<form method="POST" action="/cadastro">
-					<div class="label-div">
-						<p class="font-black sm"><strong>Nome de usuário</strong></p>
-						<input name="name" class="input-text" type="text" >
-					</div>
-					<div class="label-div">
-						<p class="font-black sm"><strong>Email</strong></p>
-						<input name="email" class="input-text" type="email" >
-					</div>
-					<div class="label-div">
-						<p class="font-black sm"><strong>Senha</strong></p>
-						<input name="pass" class="input-text" type="password" >
-					</div>
-					<div class="label-div">
-						<p class="font-black sm"><strong>Confirme a senha</strong></p>
-						<input name="confirm_pass" class="input-text" type="password" >
-					</div><hr>
-					
-					<input id="submit_btn" type="submit" class="btn" value="Cadastrar">
-				</form>
+<body class="dark-color">
+	<div class="container">
+		<div class="row">
+			<div class="col-1 align-self-start"></div>
+			<div class="col align-self-center">
+				<div class="form-div text-center">
+					<img class="img-fluid icon-img" src="imgs/channels.jpg" width="200" height="200">
+					<h2 class="font-black">MusicPly</h2>
+					<h1 class="font-black"><strong>Inscreva-se gratuitamente</strong></h1>
+					<form method="POST" action="/cadastro" onsubmit="return checkform(this)">
+						<div class="form-floating m-3">
+							<input name="name" class="form-control" type="text" placeholder="Digite o nome de usuário" required>
+							<label for="name">Nome de usuário</p>
+						</div>
+						<div class="form-floating m-3">
+							<input name="email" class="form-control" placeholder="Digite seu email" type="email" required>
+							<label for="email">Email</label>
+						</div>
+						<div class="form-floating m-3">
+							<input name="pass" class="form-control" placeholder="Digite sua senha" type="password" data-bs-toggle="tooltip" data-bs-placement="top" title="Senha deve ter no mínimo 8 caracteres" required>
+							<label for="pass">Senha</label>
+						</div>
+						<div class="form-floating m-3">
+							<input name="confirm_pass" class="form-control" placeholder="Repita a senha" type="password" required>
+							<label for="confirm_pass">Confirme a senha</label>
+						</div>
+						<hr>
+						<div class="row m-0">
+							<h5 class="font-black">Data de nascimento</h5>
+							<div class="col-4">
+								<input name="day" class="form-control" type="number" placeholder="DD" min="1" max="31" required>
+							</div>
+							<div class="col-4">
+								<select class="form-control" name="month">
+									<option selected>Janeiro</option>
+									<option>Fevereiro</option>
+									<option>Março</option>
+									<option>Abril</option>
+									<option>Maio</option>
+									<option>Junho</option>
+									<option>Julho</option>
+									<option>Agosto</option>
+									<option>Setembro</option>
+									<option>Outubro</option>
+									<option>Novembro</option>
+									<option>Dezembro</option>
+								</select>
+							</div>
+							<div class="col-4">
+								<input name="year" class="form-control" type="number" placeholder="Ano" required>
+							</div>
+						</div>
+						<hr>
+						<div class="row m-0">
+							<h5>Gênero</h5>
+							<div class="col-auto">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" id="masc" name="gender" value="Masculino" checked required>
+									<label class="form-check-label" for="masc">Masculino</label>
+								</div>
+							</div>
+							<div class="col-auto">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" id="fem" name="gender" value="Feminino">
+									<label class="form-check-label" for="fem">Feminino</label>
+								</div>
+							</div>
+							<div class="col-auto">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" id="nobin" name="gender" value="Nobin">
+									<label class="form-check-label" for="nobin">Não Binário</label>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-auto">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="true" id="check_btn" name="agreement" required>
+									<label class="form-check-label" for="check_btn">Eu aceito os termos e condições e a política de privacidade</label>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<input id="submit_btn" type="submit" class="btn btn-outline-primary btn-lg" value="Cadastrar">
+					</form>
+				</div>
 			</div>
+			<div class="col-1 aligin-self-end"></div>
 		</div>
 	</div>
 </body>

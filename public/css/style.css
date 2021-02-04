@@ -28,10 +28,31 @@
 	background-color:#C4C4C4;
 }
 
+.icon-img{
+	border-radius:35%;
+}
+
 .intro-img{
 	background-image:url("head.jpg");
 	padding:8px;
 	opacity:0.6;
+}
+.form-div{
+	border-radius:5%;
+	padding:16px;
+	background-color:#c4c4c4;
+	align-items:center;
+}
+.label-div{
+	text-align:left;
+	align-items:left;
+}
+.bg-img{
+	background-image:url("images.jpg");
+	background-image-width:100%;
+	background-image-height:100%;
+
+	width:100%;
 }
 .parallax{
 	background-image:url("images.jpg");
