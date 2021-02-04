@@ -48,14 +48,14 @@
 	align-items:left;
 }
 .bg-img{
-	background-image:url("images.jpg");
+	background-image:url("wave.gif");
 	background-image-width:100%;
 	background-image-height:100%;
 
 	width:100%;
 }
 .parallax{
-	background-image:url("images.jpg");
+	background-image:url("bg.jpg");
 	background-image-width:100%;
 	background-image-height:100%;
 
