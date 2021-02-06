@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="css/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
+    	if(window.location.href.includes("?exists")){
+    		alert("Já existe um usuário com o email informado!");
+    	}
     	function checkform(form) {
 		    var inputs = form.getElementsByTagName('input');
 		    var pass = null;

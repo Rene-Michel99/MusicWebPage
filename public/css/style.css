@@ -54,6 +54,15 @@
 
 	width:100%;
 }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:1070;
+}
+.sticky + .container{
+	padding-top:120px;
+}
 .parallax{
 	background-image:url("bg.jpg");
 	background-image-width:100%;

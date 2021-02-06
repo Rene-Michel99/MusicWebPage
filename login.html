@@ -5,10 +5,15 @@
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="css/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<title>Login - MusicPly</title>
 	<script type="text/javascript">
     	if(window.location.href.includes("?success")){
     		alert("Conta cadastrada com sucesso! Agora faça o login para entrar na sua conta.");
     		window.location.href = window.location.href.replace("?success","");
+    	}
+    	else if(window.location.href.includes("?wrong_account")){
+    		alert("A conta informada não existe ou os dados digitados estão incorretos");
+    		window.location.href = window.location.href.replace("?wrong_account","");
     	}
 
 		function checkform(form){
