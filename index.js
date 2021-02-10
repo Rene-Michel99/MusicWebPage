@@ -93,7 +93,6 @@ router.post('/login',urlencoded,function(req,res){
 		else
 			res.redirect("/login.html?wrong_account");
 	})
-	
 });
 
 app.use('/',router);
